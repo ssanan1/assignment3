@@ -5,10 +5,9 @@ metadata:
   labels:
     app: employees
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 8080
     targetPort: 8080
-    nodePort: 30000
   selector:
     app: employees
