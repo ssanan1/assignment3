@@ -20,5 +20,12 @@ spec:
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: pw
+        volumeMounts:
+        - name: mysql-pvc
+          mountPath: /var/lib/mysql          
         ports:
         - containerPort: 3306
+      volumes:
+       - name: mysql-pvc
+         persistentVolumeClaim:
+           claimName: mysql-pvc         
