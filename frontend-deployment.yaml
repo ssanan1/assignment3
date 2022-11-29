@@ -29,6 +29,6 @@ spec:
         - name: DBPWD
           value: pw
         - name: APP_COLOR
-          value: pink  
+          value: blue  
         ports:
         - containerPort: 8080
