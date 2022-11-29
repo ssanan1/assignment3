@@ -9,7 +9,7 @@ provisioner: kubernetes.io/aws-ebs
 parameters:
   type: gp2
   fsType: ext4
-reclaimPolicy: Delete
+reclaimPolicy: Retain
 allowVolumeExpansion: true
 mountOptions:
   - debug
