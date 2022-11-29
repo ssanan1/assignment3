@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employees
+  labels:
+    app: employees
+spec:
+  selector:
+    matchLabels:
+      app: employees
+  replicas: 3    
+  template:
+    metadata:
+      labels:
+        app: employees
+    spec:
+      containers:
+      - image: 751770934157.dkr.ecr.us-east-1.amazonaws.com/web_app:v0.2
+        name: employees
+        env:
+        - name: DBHOST
+          value: 10.96.0.2
+        - name: DBPORT
+          value: "3306"  
+        - name: DBUSER
+          value: root
+        - name: DATABASE
+          value: employees
+        - name: DBPWD
+          value: pw
+        - name: APP_COLOR
+          value: pink  
+        ports:
+        - containerPort: 8080
