@@ -19,7 +19,7 @@ spec:
         name: employees
         env:
         - name: DBHOST
-          value: 10.96.0.2
+          value: "mysql"
         - name: DBPORT
           value: "3306"  
         - name: DBUSER
