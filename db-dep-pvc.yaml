@@ -1,31 +1,37 @@
-apiVersion: apps/v1  
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
+  namespace: lab3
   labels:
     app: mysql
 spec:
-  selector:
-    matchLabels:
+    replicas: 1 # number of replicas
+    selector:   # which pods to watch
+     matchLabels:
       app: mysql
-  replicas: 1    
-  template:
-    metadata:
+  
+    template:     # pod template to use
+     metadata:
       labels:
         app: mysql
-    spec:
+     spec:
+      volumes:
+      - name: mysql-pvc
+        persistentVolumeClaim:
+          claimName: mysql-pvc
       containers:
-      - image: 751770934157.dkr.ecr.us-east-1.amazonaws.com/my_sql:v0.1
-        name: mysql
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: pw
+      - name: mysql
+        image: 374997061608.dkr.ecr.us-east-1.amazonaws.com/my_sql:v0.3
         volumeMounts:
         - name: mysql-pvc
-          mountPath: /var/lib/mysql          
+          mountPath: /var/lib/mysql
         ports:
         - containerPort: 3306
-      volumes:
-       - name: mysql-pvc
-         persistentVolumeClaim:
-           claimName: mysql-pvc         
+        env:
+          - name: DBPWD
+            value: "pw"
+          - name: DBUSER
+            value: "root"
+          - name: MYSQL_ROOT_PASSWORD
+            value: "pw"
