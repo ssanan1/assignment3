@@ -2,24 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: employees
+  namespace: myapp
   labels:
     app: employees
 spec:
   selector:
     matchLabels:
       app: employees
-  replicas: 2    
+  replicas: 3    
   template:
     metadata:
       labels:
         app: employees
     spec:
       containers:
-      - image: 751770934157.dkr.ecr.us-east-1.amazonaws.com/web_app:v0.2
+      - image: 374997061608.dkr.ecr.us-east-1.amazonaws.com/web_app:v0.4
         name: employees
         env:
         - name: DBHOST
-          value: "mysql"
+          value: "mysql.lab3"
         - name: DBPORT
           value: "3306"  
         - name: DBUSER
@@ -29,6 +30,7 @@ spec:
         - name: DBPWD
           value: pw
         - name: APP_COLOR
-          value: blue  
+          value: pink  
         ports:
         - containerPort: 8080
+
