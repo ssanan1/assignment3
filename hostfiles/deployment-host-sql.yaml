@@ -15,7 +15,7 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: 751770934157.dkr.ecr.us-east-1.amazonaws.com/my_sql:v0.1
+      - image: 374997061608.dkr.ecr.us-east-1.amazonaws.com/my_sql:v0.3
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -28,4 +28,4 @@ spec:
       volumes:
        - name: mysql-host
          persistentVolumeClaim:
-           claimName: mysql-host         
+           claimName: mysql-host  
