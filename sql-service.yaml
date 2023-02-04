@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
-  namespace: lab3
+  namespace: lab 3
   labels:
     app: mysql
 spec:
